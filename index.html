@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Quote Generator</title>
+    <style>
+        body {
+            background-color: #F3F3F3;
+            padding: 50px 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .container{
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .container h1{
+            color: #3C1874;
+        }
+        .container .input, .container .textarea{
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #3C1874;
+            outline: none;
+            margin-bottom: 15px;
+        }
+        .container .submitBtn{
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            background-color: #DE354C;
+            border-radius: 25px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Generate Your wonderful quote here.....</h1>
+        <form class='form' action="/quotes" method="POST">
+            <input class='input' placeholder="Enter Your Name" required autofocus type="text" name="name">
+            <textarea placeholder="Enter Your Quote" required name="quote" class="textarea" rows="3"></textarea>
+            <button class='submitBtn' type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+
+</html>

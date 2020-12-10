@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/ashaytiwari/Backend-Quote-Generator/issues"
   },
-  "homepage": "https://github.com/ashaytiwari/Backend-Quote-Generator#readme"
+  "homepage": "https://github.com/ashaytiwari/Backend-Quote-Generator#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
 }
