@@ -7,16 +7,26 @@ const app = express();
 MongoClient.connect('mongodb+srv://ashay:Gauranitai@123@cluster0.berue.mongodb.net/BACKEND QUOTE GENERATOR?retryWrites=true&w=majority',
     { useUnifiedTopology: true })
     .then(client => {
-        console.log('Database Connect');
+        console.log('Database Connected');
         const db = client.db('BACKEND-QUOTE-GENERATOR');
         const quotesCollection = db.collection('quotes');
+
+        // Usimg EJS Template Engine
+        app.set('view engine', 'ejs');
 
         // Make sure you place body-parser before your CRUD handlers!
         app.use(bodyParser.urlencoded({ extended: true }));
 
         // CRUD:- Read operation
         app.get('/', (req, res) => {
-            res.sendFile(__dirname + '/index.html');
+            db.collection('quotes').find().toArray()
+            .then(results => {
+                res.render('index.ejs', {quotes: results});
+            })
+            .catch(err => {
+                console.error(err);
+            });
+            
         });
 
         // CRUD:- Post operation
