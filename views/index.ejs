@@ -58,26 +58,56 @@
             color:  #DE354C;
             float: right;
         }
+        .updateBtn{
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            background-color: #0dd81e;
+            border-radius: 25px;
+            color: #ffffff;
+            cursor: pointer;
+            float: right;
+        }
+        .deleteBtn{
+            padding: 10px 20px;
+            border: none;
+            outline: none;
+            background-color: #e7d31c;
+            border-radius: 25px;
+            color: #ffffff;
+            cursor: pointer;
+            float: right;
+            margin-right: 10px;
+        }
+        .updateBtn, .deleteBtn{
+            visibility: hidden;
+        }
     </style>
+    
 </head>
 
 <body>
     <div class="container">
         <h1>Generate Your wonderful quote here.....</h1>
-        <form class='form' action="/quotes" method="POST">
+        <form class='form' action="/quotes" method="POST" name="form">
             <input class='input' placeholder="Enter Your Name" required autofocus type="text" name="name">
+            <input class='input' placeholder="Quote ID" required  type="text" name="id">
             <textarea placeholder="Enter Your Quote" required name="quote" class="textarea" rows="3"></textarea>
-            <button class='submitBtn' type="submit">Submit</button>
+            <button class='submitBtn' type="submit" id="submit">Submit</button>
+            <button class='updateBtn' onclick="updateHandler()" id="update">Update</button>
+            <button class='deleteBtn' id="delete" onclick="deleteHandler()">Delete</button>
         </form>
     </div>
 
     <!-- Loop through Quotes -->
     <% for(let quoteNumber = 0; quoteNumber < quotes.length; quoteNumber++) { %>
-        <div class='quotesBox'>
+        <div class='quotesBox' id='quotesBox' onclick="quoteBoxHandler('<%= quoteNumber %>')">
+            <h2><%= quotes[quoteNumber].id %></h2>
             <h2><%= quotes[quoteNumber].quote %></h2>
             <h5><%= quotes[quoteNumber].name %></h5>
         </div>
     <% } %>
+    <script src='/main.js'></script>
 </body>
 
 </html>
